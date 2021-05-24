@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="img/obelisco.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Lista de personas</title>
+</head>
+<body>
+    <img class="bkg" src="img/obelisco.jpg" alt="Fondo obelisco">
+        
+    <div class="container">
+
+        <div class="alert alert-primary title">
+            <h1>Listado</h1>
+            <p>Haga click sobre un nombre para eliminarlo</p>
+            <p>Contador: <b id='contador'>0</b> - <a href='#' class="reset_link" onclick='reset_everything()'>Vaciar listado</a></p>
+        </div>
+
+        <div class="alert alert-light list">
+            <ol class="list_ul">
+                <div id="TARGET">
+                    << VACIO >>
+                </div>
+            </ol>
+        </div>
+
+        <div class="ingreso">
+            <input type="text" placeholder="Nombre" maxlength="15" class="inputs input_nombre" id="NOMBRE">
+            <input type="text" placeholder="Apellido" maxlength="15" class="inputs input_apellido" id="APELLIDO">
+            <button class="btn btn-success submit" onclick='refresh()'' id='btn_add'>+</button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
