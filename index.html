@@ -10,18 +10,17 @@
     <title>Lista de personas</title>
 </head>
 <body>
-    <img class="bkg" src="img/obelisco.jpg" alt="Fondo obelisco">
         
     <div class="container">
 
         <div class="alert alert-primary title">
             <h1>Listado</h1>
             <p>Haga click sobre un nombre para eliminarlo</p>
-            <p>Contador: <b id='contador'>0</b> - <a href='#' class="reset_link" onclick='reset_everything()'>Vaciar listado</a></p>
+            <p>Contador: <b id='contador'>0</b> - <a href='#' class="reset_link" onclick='reset_everything()' data-toggle="tooltip" data-placement="top" title="Borra toda la lista para comenzar desde cero.">Vaciar listado</a></p>
         </div>
 
         <div class="alert alert-light list">
-            <ol class="list_ul">
+            <ol class="list_ol">
                 <div id="TARGET">
                     << VACIO >>
                 </div>
@@ -30,9 +29,11 @@
 
         <div class="ingreso">
             <input type="text" placeholder="Nombre" maxlength="15" class="inputs input_nombre" id="NOMBRE">
+            <button class="btn btn-success submit bt1" onclick='refresh()'' id='btn_add' data-toggle="tooltip" data-placement="top" title="Agrega el nombre completo a la lista.">+</button>
             <input type="text" placeholder="Apellido" maxlength="15" class="inputs input_apellido" id="APELLIDO">
-            <button class="btn btn-success submit" onclick='refresh()'' id='btn_add'>+</button>
         </div>
+        <button class="btn btn-success submit bt2" onclick='refresh()'' id='btn_add2' data-toggle="tooltip" data-placement="top" title="Agrega el nombre completo a la lista.">Agregar</button>
+        
     </div>
 
     <script src="js/app.js"></script>

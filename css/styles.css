@@ -1,25 +1,19 @@
 body {
     display: flex;
     flex-flow: column wrap;
-}
-
-
-.bkg {
-    position: fixed;
-    top: -30%;
-    left: -6.1%;
-    width: 110%;
-    background-color: red;
-    z-index: -999;
+    background-image: url(/img/obelisco.jpg);
+    background-size: 500px;
+    background-repeat: repeat;
 }
 
 .container {
-    height: 800px;
+    height: 100vh;
     display: flex;
     flex-flow: column wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
     width: 50%;
-    opacity: 0.8;
+    max-width: 45%;
+    opacity: 0.95;
 }
 
 .title, .list {
@@ -28,7 +22,6 @@ body {
 .title {
     text-align: center;
     padding:1%;
-    height: 18%;
 }
 .reset_link {
     text-decoration: none;
@@ -45,24 +38,22 @@ body {
 
 
 .list {
-    max-height: 30%;
-    padding-bottom: 3%;
-    padding-top: 1.5%;
-    padding-left: 0;
+    max-height: 55%;
+    padding: 0;
 }
 .list_ol {
-    list-style-type: upper-roman;
-    padding-top: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
+    margin: 0;
 }
 #TARGET {
     display: flex;
     flex-flow: column wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     max-width: 100%;
-    min-width: 10%;
+    min-width: auto;
     gap: 8px 45px;
     max-height: 225px;
 }
@@ -71,7 +62,8 @@ body {
     flex-flow: row wrap;
     column-gap: 1%;
     justify-content: center;
-    max-height: 10px;
+    align-items: center;
+    max-height: 10%;
 }
 
 
@@ -100,17 +92,29 @@ body {
 .inputs {
     text-align: center;
     background-color: rgb(255, 255, 189);
+    border: 3px solid beige;
     transition: 1s;
     border-radius: 5px;
-    opacity: 0.8;
+    opacity: 0.95;
 }
 
 .submit {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
     border: 3px solid black;
     border-radius: 50%;
-    width: 5%;
+    width: 45px; height: 45px;
 }
 
+
+.bt1 {
+    display: flex;
+    font-size: 1.5em;
+}
+.bt2 {
+    display: none;
+}
 
 
 .submit, .item:hover {
@@ -131,7 +135,7 @@ body {
 
 @keyframes opacar {
     0% {
-        opacity: 0.85;
+        opacity: 0.9;
     }
     20% {
         opacity: 1;
@@ -142,7 +146,7 @@ body {
         background-color: greenyellow;
     }
     100% {
-        opacity: 0.85;
+        opacity: 0.9;
     }
 }
 
@@ -151,10 +155,50 @@ body {
         transform: scale(1);
     }
     50% {
-        transform: scale(1.25);
-        font-weight: bold;
+        transform: scale(1.15); 
     }
     100% {
         transform: scale(1);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    body{
+        height: 100vh;
+    }
+    .container {
+        height: 100vh;
+        width: 90%;
+        max-width: 90%;
+        align-items: center;
+    }
+    .title {
+        width: 100%;
+    }
+
+
+    #TARGET {
+        height: 100%;
+    }
+    .ingreso {
+        row-gap: 10px
+    }
+    .inputs {
+        width: 52.5vh;
+    }
+    .bt1 {
+        display: none;
+    }
+    .bt2 {
+        display: flex;
+        justify-content: center;
+        border-radius: 5px;
+        min-width: 60%;
+        bottom: -10px;
+    }
+    .list {
+        max-height: 30%;
+        padding: 1% 2%;
+        width: 100%;
     }
 }
