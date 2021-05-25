@@ -1,7 +1,8 @@
 body {
     display: flex;
     flex-flow: column wrap;
-    background-image: url(/img/obelisco.jpg);
+    /*background-image: url(/img/obelisco.jpg);*/
+    background-image: url(https://raw.githubusercontent.com/rei-rala/listador_personas/main/img/obelisco.jpg);
     background-size: 500px;
     background-repeat: repeat;
 }
