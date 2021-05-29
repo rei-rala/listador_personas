@@ -2,12 +2,23 @@
   
 v1.0.0 - 24/05/2021  
 -Version inicial  
--Limitacion funcional conocida: Eliminar una entrada con igual nombre que otras, eliminara todas en la misma orden.  
 -Diseño visual unicamente para 1080p en 16:9 y similares  
+*Limitacion funcional conocida: Eliminar una entrada con igual nombre que otras, eliminara todas en la misma orden. (fixed v1.1)  
+*Limitacion funcional conocida: No es posible añadir nombres o apellidos con espacios. (fixed v1.1)  
   
   
 v1.0.5 - 24/05/2021  
 -Modificado fondo  
 -Añadido algo de diseño responsivo  
 -Mejorada logica en javascript (?)  
--Diseño mas reactivo, alerta al usuario en cuanto sea conveniente -> Puede mejorarse
+-Diseño mas reactivo, alerta al usuario en cuanto sea conveniente -> Puede mejorarse  
+*Limitacion funcional conocida: eliminar de la lista los elementos de acuerdo a su value resulta problematico (fixed 1.1)  
+*En pantallas grandes, puede mejorarse el orden al tabear en los inputs(fixed 1.1)  
+  
+  
+v1.1 - 29/05/2021  
+-Reemplazadas algunas malas practicas en el codigo JS (DOM & function related)  
+-Reemplazada tipo de lista por unordered  
++Algo de diseño responsivo  
++En pantallas grandes, tabear en la zona de inputs respeta un orden logico (nombre, apellido, boton para agregar)  
++Se corrigio limitacion al agregar nombres/apellidos con espacios y la eliminacion de ingresos identicos, mediante la asignacion de valores a cada elemento de lista

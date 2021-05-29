@@ -1,74 +1,86 @@
 let listed = [];
-let counter = document.getElementById('contador');
-let target_list = document.getElementById('TARGET');
+const counter = document.getElementById('contador');
+const target_list = document.getElementById('TARGET');
 
-let button_add = document.getElementById('btn_add');
-let button_add2 = document.getElementById('btn_add2');
-button_add.innerHTML = '+';
-button_add2.innerHTML = 'Agregar';
+const button_add = document.getElementById('btn_add');
+const button_add2 = document.getElementById('btn_add2');
 
-function isOverflown(element) {
-    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
-}
+btn_add.addEventListener('click', pushItem );
+btn_add2.addEventListener('click', pushItem );
+
+button_add.innerText = '+';
+button_add2.innerText = 'Agregar';
 
 
-function show(array) {
-  counter.innerHTML = array.length;
+isOverflown = element => element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+
+show = () => {
   let show = '';
-  if (array.length != 0) {
-    array.forEach ( fullName => show += `<li class='item' onclick='delete_item(this)' data-toggle="tooltip" data-placement="top" title="Click para eliminar este elemento."> ${fullName} </li>`);
+  if (listed.length > 0) {
+    for (let i=0; i < listed.length; i++) {
+      show += listed[i]
+    }
   } else {
-    show = '<< VACIO >>'
+    show = '<< Vacio >>'
   }
-  return show
+  target_list.innerHTML = show;
+  counter.innerText = listed.length;
+  const items = target_list.querySelectorAll('li');
+  for (let i=0; i<items.length; i++) { 
+    items[i].addEventListener('click', delete_item)
+  }
 }
 
 
-let refresh = function() {
+function pushItem() {
+  //console.info('Funciona adicionar')
   if ( isOverflown(target_list) ) {
       console.log('Maximo por pantalla');
-      button_add.innerHTML = '!';
-      button_add2.innerHTML = 'Excedido maximo!'
+      button_add.innerText = '!';
+      button_add2.innerText = 'Excedido!'
+      botton_add.style.backgroundColor = 'red';
+      botton_add2.style.backgroundColor = 'red';
+      botton_add.style.Color = 'white';
+      botton_add2.style.Color = 'white';
   } else {
-    button_add.innerHTML = '+';
-    button_add2.innerHTML = 'Agregar!'
+    button_add.innerText = '+';
+    button_add2.innerText = 'Agregar'
     
     let name_    = document.getElementById('NOMBRE');
     let surname_ = document.getElementById('APELLIDO');   
-    if ( name_.value.includes(' ') || surname_.value.includes(' ') ) {
-      console.log('No se permiten espacios');
-    } else {
-      if (name_.value == '' || surname_.value =='') {
+    if (name_.value == '' || surname_.value =='') {
         console.log('Falta completar al menos un dato');
       } else {
-        console.log(`${listed.length+1}. Añadido Nombre: ${name_.value}, Apellido: ${surname_.value}`);
-        listed.push(`${name_.value} ${surname_.value}`);
-        target_list.innerHTML = show(listed);
+        console.log(`Añadido: ${name_.value} ${surname_.value}.`);
+        listed.push(`<li class='item' title="Click para eliminar este elemento." value="${listed.length+1}"> ${name_.value} ${surname_.value} </li>`); 
+        
+        show();
         name_.value = ''; surname_.value = '';
-      }
     }
   }
 }
 
-let delete_item = function(elemento) {
-  //let target_list = document.getElementById('TARGET');
-  let tarr = [];
 
-  for ( let index = 0; index < listed.length; index++ ) {
-    let element = listed[index];
-    if (element == elemento.innerText) {
-      console.log(`Eliminado '${element}' en indice ${index+1}`);
-    } else {
-      tarr.push(element);
+function delete_item() {
+  //console.info('Funciona delete')
+  
+  const tarr = []
+  for (let i=0; i<listed.length; i++) {
+    if (listed[i].includes(' value=\"' + this.value + '\"')) {
+      console.log(`Eliminado ${this.innerText}`);
+    }
+    else {
+      //console.log(`No es eliminado index ${i+1}`)
+      tarr.push(listed[i]);
     }
   }
+  listed = tarr;
 
-  target_list.innerHTML = show(tarr);
-  listed = tarr
-  console.log(target_list.innerText)
+  show();
 }
 
-let reset_everything = () => {
+reset_everything = () => {
+  console.log('Lista vaciada');
   listed = [];
-  target_list.innerHTML = show(listed);
+  show();
 }
