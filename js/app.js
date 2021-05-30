@@ -43,7 +43,6 @@ function refreshButton(e) {
 
 
 function show (e) {
-  let show = '';
   if (e.target.id == 'reset_link') {
     while (target_list.lastChild) {
       target_list.lastChild.remove();
@@ -52,25 +51,34 @@ function show (e) {
     console.log('Lista vaciada');
   }
   else {
-    if (listed.length > 0) {
-      for (let i=0; i < listed.length; i++) {
-        show += listed[i];
-      }
-    }
-    else {
-      show = '<< Vacio >>';
-    }
-    target_list.innerHTML = show;
-    counter.innerText = listed.length;
+    //console.log(`Count ${target_list.childElementCount}`)
+    const frag = document.createDocumentFragment();
+    let i = 1;
+    
+    while (target_list.lastChild) {
+      target_list.lastChild.remove();
+    };
+    listed.forEach(enlistado => {
+      const tempElement = document.createElement('li');
+      tempElement.classList.add('item');
+      tempElement.title = 'Click para eliminar este elemento';
+      tempElement.value = i;
+      tempElement.innerText = enlistado;
+      i++;
+
+      frag.appendChild(tempElement);
+    });
+    target_list.appendChild(frag);
     target_list.addEventListener('click', delete_item);
-  }
+    counter.innerText = target_list.childElementCount;
+  };
   return refreshButton(e);
-}
+};
 
 
 function tryPush(e) {
   //console.info('Funciona adicionar')
-  e.stopPropagation()
+  e.stopPropagation();
   function push () {    
       if (refreshButton()) {
       let name_    = document.getElementById('NOMBRE');
@@ -80,8 +88,13 @@ function tryPush(e) {
       }
       else {
         console.log(`Añadido: ${name_.value} ${surname_.value}.`);
-        listed.push(`<li class='item' title="Click para eliminar este elemento." value="${listed.length+1}"> ${name_.value} ${surname_.value} </li>`); 
+        listed.push( `${name_.value} ${surname_.value}`);  
         show(e);
+        target_list.lastElementChild.classList.add('new_item')
+        function removeAnimation() {
+          target_list.lastElementChild.classList.remove('new_item');
+        }
+        setTimeout( removeAnimation , 500 )
         name_.value = ''; surname_.value = '';
       }
     }
@@ -92,22 +105,24 @@ function tryPush(e) {
 
 function delete_item(e) {
   //console.info('Funciona delete')
+  // console.log(e)
   e.stopPropagation();
-  if (this.innerHTML == undefined) {
-    console.log(this.inner);
-  }
-  else {
-    const tarr = [];
-    for (let i=0; i<listed.length; i++) {
-      if (listed[i].includes(' value=\"' + e.target.value + '\"')) {
-        console.log(`Eliminado ${e.target.innerText}`);
-      }
-      else {
-        //console.info(`No es eliminado index ${i+1}`)
-        tarr.push(listed[i]);
-      }
+  const tarr = [];
+  for (let i=0; i<target_list.childElementCount; i++) {
+    const childNode = target_list.childNodes;
+    if (childNode[i].value == e.target.value) {
+      console.log(`Eliminado ${e.target.innerText}`);
+      e.target.setAttribute('id', 'bye_item');
     }
+    else {
+      //console.info(`No es eliminado index ${i+1}`);
+      tarr.push( listed[i] );
+    }
+  }
+  // console.info(tarr)
+  function awaitAnimation () {
     listed = tarr;
     show(e);
   }
+  setTimeout(awaitAnimation , 200);
 }

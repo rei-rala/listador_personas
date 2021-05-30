@@ -26,4 +26,9 @@ v1.1 - 29/05/2021
   
 v1.1.1 - 30/05/2021  
 -Listeners reducidos por aplicar delegacion de eventos  
--Tweaks en diseño responsivo
+-Tweaks en diseño responsivo  
+  
+  
+v1.1.2 - 31/05/2021  
+-Animaciones al crear o borrar los nombres  
+-'Mejoras' en codigo JS respetando buenas practicas del DOM

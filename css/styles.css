@@ -112,17 +112,6 @@ body {
     height: 5%;
 }
 
-
-
-
-.submit:hover {
-    border: 3px solid gainsboro;
-}
-.submit:active {
-    border: 3px solid red;
-}
-
-
 .item {
     border-radius: 5px;
 }
@@ -133,6 +122,43 @@ body {
 .item:active {
     cursor: pointer;
     background-color: rgb(255, 108, 108);
+}
+
+.new_item {
+    animation: aparecer 200ms;
+    animation-iteration-count: 1;
+}
+
+@keyframes aparecer {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+#bye_item {
+    animation: desaparecer 200ms;
+    background-color: red;
+    animation-iteration-count: 1;
+}
+
+@keyframes desaparecer {
+    from {
+        transform: scale(1)
+    }
+    to {
+        transform: scale(0);
+    }
+}
+
+
+.submit:hover {
+    border: 3px solid gainsboro;
+}
+.submit:active {
+    border: 3px solid red;
 }
 
 
