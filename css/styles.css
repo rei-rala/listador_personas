@@ -49,19 +49,30 @@ body {
 .title {
     text-align: center;
     padding:1%;
+    
+    font-size: 1rem;
 }
+
+.title > .reset_link {
+    font-size: 0.5rem;
+}
+
 .title h1 {
-    font-size: 5rem;
     font-weight: bold;
 }
-.reset_link {
+#contador2 {
+    display: none;
+}
+
+#reset_link {
     text-decoration: none;
     border-radius: 5px;
     color: red;
     font-weight: bold;
     transition-duration: 0.5s;
+    width: fit-content;
 }
-.reset_link:hover {
+#reset_link:hover {
     text-decoration: none;
     background-color: red;
     color: aliceblue;
@@ -212,10 +223,7 @@ body {
     }
 }
 
-@media screen and (max-width: 1024px) and (orientation:landscape){
-    body {
-        overflow: hidden;
-    }
+@media screen and (max-width: 1024px) {
     .container {
         height: 100%;
         max-width: 95%;
@@ -275,10 +283,8 @@ body {
 
 }
 
-@media screen and (max-width: 1024px) and (orientation:portrait){
-    body {
-        overflow: hidden;
-    }
+@media screen and (max-width: 800px) and (orientation:portrait){
+
     .container {
         height: 100%;
         max-width: 90%;
@@ -288,7 +294,11 @@ body {
     .background_image {
         background-size: 100%;
     }
-
+    .title a {
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+    }
     .title {
         height: fit-content;
         width: 100%;
@@ -336,27 +346,40 @@ body {
 
 }
 
-@media screen and (max-width:550px) and (orientation: portrait) {
+@media screen and (max-width:680px) {
 
-    body {
-        overflow: hidden;
-    }
 
     .background_image {
         background-size: 200%;
     }
     .title {
-        text-align: center;
-        height: fit-content;
+        padding: 2%;
+        justify-content: space-between;
+    }
+    .title > p {
+        padding: 1%;
+        justify-content: space-around;
     }
     .title > p * {
         display: none;
     }
 
-    #contador, reset_link {
-        display: block;
+    #contador, #reset_link {
+        display: flex;
+        padding: 0;
+        align-self: flex-end;
         text-align: center;
+        padding: 0;
     }
+    #contador {
+        text-align: start;
+        color: green;
+    }
+    #reset_link {
+        width: 45%;
+        font-size: x-large;
+    }
+
     .list {
         max-height: 60%;
         padding: 1% 2%;
@@ -390,3 +413,17 @@ body {
         border-radius: 55px;
     }
 }
+
+@media screen and (max-width:480px) and (orientation: portrait) {
+    * {
+        font-size: small;
+    }
+    #reset_link {
+        font-size: smaller;
+    }
+    #bt1 {
+        height: 1rem;
+        width:  1rem;
+    }
+}
+

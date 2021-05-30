@@ -21,4 +21,9 @@ v1.1 - 29/05/2021
 -Reemplazada tipo de lista por unordered  
 +Algo de diseño responsivo  
 +En pantallas grandes, tabear en la zona de inputs respeta un orden logico (nombre, apellido, boton para agregar)  
-+Se corrigio limitacion al agregar nombres/apellidos con espacios y la eliminacion de ingresos identicos, mediante la asignacion de valores a cada elemento de lista
++Se corrigio limitacion al agregar nombres/apellidos con espacios y la eliminacion de ingresos identicos, mediante la asignacion de valores a cada elemento de lista  
+  
+  
+v1.1.1 - 30/05/2021  
+-Listeners reducidos por aplicar delegacion de eventos  
+-Tweaks en diseño responsivo

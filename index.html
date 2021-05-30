@@ -15,7 +15,7 @@
         <div class="alert alert-primary title">
             <h1>Listado</h1>
             <p class="info">Haga click sobre un nombre para eliminarlo</p>
-            <p> <span>Contador:</span> <b id='contador'>0</b> <span>-</span> <a href='#' class="reset_link" id="reset_link" onclick='reset_everything()' data-toggle="tooltip" data-placement="top" title="Borra toda la lista para comenzar desde cero.">Vaciar listado</a></p>
+            <p> <span id='contador1'>Contador:</span> <b id='contador'>0</b> <span>-</span> <a href='#' class="reset_link" id="reset_link" data-toggle="tooltip" data-placement="top" title="Borra toda la lista para comenzar desde cero.">Vaciar listado</a></p>
         </div>
 
         <div class="alert alert-light list">
@@ -26,11 +26,11 @@
             </ol>
         </div>
 
-        <div class="ingreso">
+        <div class="ingreso" id='ingreso'>
             <input type="text" placeholder="Nombre" maxlength="20" class="inputs input_nombre" id="NOMBRE">
             <input type="text" placeholder="Apellido" maxlength="20" class="inputs input_apellido" id="APELLIDO">
-            <button class="btn btn-success submit bt1" id='btn_add' data-toggle="tooltip" data-placement="top" title="Agrega el nombre completo a la lista.">+</button>
-            <button class="btn btn-success submit bt2" id='btn_add2' data-toggle="tooltip" data-placement="top" title="Agrega el nombre completo a la lista.">Agregar</button>
+            <button class="btn btn-success submit bt1" id='btn_add' title="Agrega el nombre completo a la lista.">+</button>
+            <button class="btn btn-success submit bt2" id='btn_add2' title="Agrega el nombre completo a la lista.">Agregar</button>
         </div>
         
         
