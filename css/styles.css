@@ -1,6 +1,8 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    color: gray;
 }
 
 h1, p {
@@ -31,7 +33,6 @@ body {
     padding: 0;
     height: 100vh;
     max-width: 80%;
-
     display: flex;
     flex-flow: column wrap;
     justify-content: space-around;
@@ -45,11 +46,13 @@ body {
     transition: ease-in-out;
     transition-duration: 0.5s;
     margin: 0;
+    
+    border: 1px solid green;
 }
 .title {
     text-align: center;
     padding:1%;
-    
+    background-color: #cafc03;
     font-size: 1rem;
 }
 
@@ -80,16 +83,30 @@ body {
 
 
 .list {
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
     height: 50%;
     width: 100%;
-    padding: 0;
+    padding: 0 0 0.5% 0;
+    overflow: hidden;
 }
 .list_ul {
     list-style-type: circle;
     justify-content: flex-start;
+    margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
+    height: 90%;
+}
+
+#sortear {
+    text-align: center;
+    height: 10%;
+    width: 99%;
+    background-color:  rgb(255, 255, 189);
+    border: 1px solid green;
+    font-weight: bold;
 }
 
 #TARGET {
@@ -125,28 +142,32 @@ body {
 }
 
 .new_item {
-    animation: aparecer 200ms;
-    animation-iteration-count: 1;
+    animation: aparecer 200ms 1;
 }
 
 @keyframes aparecer {
-    from {
+    0% {
         transform: scale(0)
     }
-    to {
+    80% {
+        transform: scale(1.1);
+    }
+    100% {
         transform: scale(1);
     }
 }
 
 #bye_item {
-    animation: desaparecer 200ms;
+    animation: desaparecer 200ms 1;
     background-color: red;
-    animation-iteration-count: 1;
 }
 
 @keyframes desaparecer {
-    from {
+    0% {
         transform: scale(1)
+    }
+    20% {
+        transform: scale(1.1);
     }
     to {
         transform: scale(0);
@@ -186,10 +207,6 @@ body {
 }
 
 
-.input_nombre {
-    order: 0;
-}
-
 .bt1 {
     order: 1;
 }
@@ -205,18 +222,12 @@ body {
 
 
 .submit, .item:hover {
-    animation: agrandar;
-    animation-duration: 2s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
+    animation: agrandar 2s ease-in-out infinite;
     transition-duration: 0.25s;
 }
 
 .inputs:focus {
-    animation: opacar;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+    animation: opacar 1.25s ease-in-out infinite;
     transition-duration: 0.25s;
 }
 
@@ -248,6 +259,241 @@ body {
         transform: scale(1);
     }
 }
+
+#lotteryScreen {
+    background-color: blanchedalmond;
+}
+
+.sortear {
+    border: 3px solid #cafc03;
+    border-radius: 3%;
+    height: 90%;
+    /*overflow: hidden;*/
+}
+
+.lotteryTitle {
+    display: flex;
+    padding: 0;
+    height: 10%;
+    background-color: white;
+    border-bottom: 2px solid #cafc03;
+}
+.lotterySection {
+    display: flex;
+    height: 90%;
+}
+
+
+.backButton {
+    height: 100%;
+    width: 10%;
+    padding: 0;
+    background-color: wheat;
+}
+
+.lotteryTitle > h2 {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    padding-left: 35%;
+    margin-bottom: 0;
+}
+
+
+
+.participants, .configLottery {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1%;
+    height: 100%;
+    width: 50%;
+    /*overflow: hidden;*/
+}
+.participants > h4, .configLottery > h4 {
+    text-align: center;
+    height: 7%;
+    margin-bottom: 0;
+}
+
+#participants-list {
+    margin-bottom: 0;
+    padding: 2% 1%;
+    height: 93%;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    flex-flow: column wrap;
+    list-style-type: none;
+    font-size: 1.15rem;
+    max-width: fit-content;
+}
+
+.participants-List * {
+    cursor: pointer;
+}
+
+li::marker {
+    font-size: 0.75rem;
+}
+
+.config-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1%;
+    height: 8%;
+    width: 100%;
+}
+
+.config-section * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    width: 20%;
+    height: 60%;
+}
+
+.input-winners {
+    width: 10%;
+    margin-right: 8%;
+    text-align: center;
+}
+
+.winners {
+    width: 100%;
+    height: 75%;
+}
+
+.reset-lottery {
+    height: 10%;
+    width: 100%;
+}
+
+.winners > ol {
+    overflow: hidden;
+    padding: 2.5% 1%;
+    height: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+#winnerList > * {
+    border-radius: 15px;
+}
+
+
+@keyframes rainbowCOLOR {
+    100%,0%{
+        color: rgb(255,0,0);
+    }
+    8%{
+        color: rgb(255,127,0);
+    }
+    16%{
+        color: rgb(255,255,0);
+    }
+    25%{
+        color: rgb(127,255,0);
+    }
+    33%{
+        color: rgb(0,255,0);
+    }
+    41%{
+        color: rgb(0,255,127);
+    }
+    50%{
+        color: rgb(0,255,255);
+    }
+    58%{
+        color: rgb(0,127,255);
+    }
+    66%{
+        color: rgb(0,0,255);
+    }
+    75%{
+        color: rgb(127,0,255);
+    }
+    83%{
+        color: rgb(255,0,255);
+    }
+    91%{
+        color: rgb(255,0,127);
+    }
+}
+
+@keyframes rainbowBKG{
+    100%,0%{
+        background-color: rgb(255,0,0);
+    }
+    8%{
+        background-color: rgb(255,127,0);
+    }
+    16%{
+        background-color: rgb(255,255,0);
+    }
+    25%{
+        background-color: rgb(127,255,0);
+    }
+    33%{
+        background-color: rgb(0,255,0);
+    }
+    41%{
+        background-color: rgb(0,255,127);
+    }
+    50%{
+        background-color: rgb(0,255,255);
+    }
+    58%{
+        background-color: rgb(0,127,255);
+    }
+    66%{
+        background-color: rgb(0,0,255);
+    }
+    75%{
+        background-color: rgb(127,0,255);
+    }
+    83%{
+        background-color: rgb(255,0,255);
+    }
+    91%{
+        background-color: rgb(255,0,127);
+    }
+}
+
+
+.w1 {
+    font-size: 2.75rem;
+    font-weight: bold;
+    animation: agrandar 2s infinite ease-in-out;
+}
+.w2 {
+    font-size: 2.65rem;
+}
+.w3 {
+    font-size: 2.5rem;
+}
+.w4, .w5, .w6, .w7, .w8, .w9, .w10 {
+    font-size: 1.8rem;
+}
+
+
+.hide {
+    display: none;
+}
+
+.switch_in {
+    animation: 1s aparecer 1;
+}
+.switch_out {
+    animation: 1s desaparecer ease-in 1;
+}
+
 
 @media screen and (max-width: 1024px) {
     .container {
@@ -452,4 +698,3 @@ body {
         width:  1rem;
     }
 }
-

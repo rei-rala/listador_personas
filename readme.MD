@@ -27,8 +27,15 @@ v1.1 - 29/05/2021
 v1.1.1 - 30/05/2021  
 -Listeners reducidos por aplicar delegacion de eventos  
 -Tweaks en diseño responsivo  
+*Contador no se actualiza al eliminar vaciar la lista (fixed 1.1.3)  
   
   
 v1.1.2 - 31/05/2021  
 -Animaciones al crear o borrar los nombres  
--'Mejoras' en codigo JS respetando buenas practicas del DOM
+-'Mejoras' en codigo JS respetando buenas practicas del DOM  
+  
+  
+v2.0 beta - 31/05/2021  
+-Funcionalidad de sorteo agregada, podra seleccionarse una cantidad logica de ganadores, se elegiran al azar cada vez que sea demandado.  
++Tras ser vaciada la lista: i) Incorporada animacion a todos los elementos. ii) Solucionada actualizacion del contador  
+*Diseño responsivo no disponible seccion de sorteo
