@@ -14,6 +14,7 @@ const surname_ = document.getElementById('APELLIDO');
 const button_add = document.getElementById('btn_add');
 const button_add2 = document.getElementById('btn_add2');
 const winnerList = document.getElementById('winnerList');
+let resetWinner = true;
 
 isOverflown = element => element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
 
@@ -27,7 +28,7 @@ function delegate(e) {
   ( TARGET_ID == 'reset_link') ? show(e) : {};
 
   ( TARGET_ID == 'sortear' || TARGET_ID == 'toListScreen' ) ? toggleLotteryScreen(e) : {};
-  ( TARGET_ID == 'reset-lottery') ? resetWinnerList(e) : {};
+  ( TARGET_ID == 'reset-lottery') ? resetWinnerList(TARGET_ID) : {};
   ( TARGET_ID == 'lottery-go') ? lottery() : {};
   
   e.stopPropagation();
@@ -213,10 +214,18 @@ function refreshLottery () {
   participantsList.appendChild(frag);
 };
 
-function resetWinnerList() {
+function resetWinnerList(idFrom) {
+  if (idFrom == 'reset-lottery') {
+    const PARTICIPANTS = document.getElementById('participants-list').childNodes;
+    PARTICIPANTS.forEach( p => {
+      p.style.fontWeight = 'normal';
+      p.style.animation = '';
+    });
+  };
   while (winnerList.childElementCount > 0) {
     winnerList.removeChild(winnerList.lastChild);
   };
+  console.warn()
 };
 
 
@@ -227,10 +236,8 @@ function lottery() {
 
   if (qWinners == 0 || isNaN( qWinners ) ) {return console.log('Debe haber al menos un ganador')}
   else if (qWinners > 7 || qWinners > PARTICIPANTS.length) {return console.log('Demasiados ganadores')};
+  resetWinnerList(null)
   
-  resetWinnerList()
-
-
   const the_winners_are_stored_here = [];
 
   function defWinners() {
@@ -260,14 +267,26 @@ function lottery() {
     tempElement.classList.add(`w${qWinners-i+2}`);
     tempElement.innerText = (document.getElementById('participants-list').childNodes[w]).innerText;
     tempElement.value = (document.getElementById('participants-list').childNodes[w]).value;
-    tempElement.style.animation = ` rainbowBKG ${qWinners-i*0.55}s linear infinite`;
+    
+    tempElement.style.animation =`${i}s rainbowBKG`
     frag.appendChild(tempElement)
     i--;
   });
   //console.info(frag)
   winnerList.appendChild(frag);
 
-  //console.info(winnerList)
+  if (!document.getElementById('hold-last-winner').checked) {
+    const PARTICIPANTS = document.getElementById('participants-list').childNodes;
+    PARTICIPANTS.forEach( p => {
+      p.style.fontWeight = 'normal';
+      p.style.animation = '';
+    });
+  }
 
-  
-}
+  setTimeout( ()=> { 
+    winnerList.children[0].style.animation =`${i}s rainbowCOLOR infinite`;
+    PARTICIPANTS[winnerList.children[0].value-1].style.fontWeight = 'bold';
+    PARTICIPANTS[winnerList.children[0].value-1].style.animation = `${i}s agrandar infinite`;
+    } , ((qWinners+1)*1000)
+  ); 
+};

@@ -35,7 +35,13 @@ v1.1.2 - 31/05/2021
 -'Mejoras' en codigo JS respetando buenas practicas del DOM  
   
   
-v2.0 beta - 31/05/2021  
+v2.0b - 31/05/2021  
 -Funcionalidad de sorteo agregada, podra seleccionarse una cantidad logica de ganadores, se elegiran al azar cada vez que sea demandado.  
 +Tras ser vaciada la lista: i) Incorporada animacion a todos los elementos. ii) Solucionada actualizacion del contador  
-*Diseño responsivo no disponible seccion de sorteo
+*Diseño responsivo no disponible seccion de sorteo, solo pantallas wide  
+  
+  
+v2.0.1b - 01/06/2021  
+-Añadidas animaciones en ganadores de sorteos  
+-Añadida opcion para mantener al ganador con primer puesto al realizar sorteos consecutivos  
+-Boton de reset de sorteo hace wipe de estilos a lista de candidatos y a lista de ganadores por igual

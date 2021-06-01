@@ -36,10 +36,12 @@
 
     </div>
 
-    <div class="container sortear switch_out hide" id="lotteryScreen"> <!-- switch_out --> 
+    <div class="container sortear switch_out hide" id="lotteryScreen">
         <div class="lotteryTitle">
-                <button class="btn btn-info backButton" id='toListScreen'>FLECHITA PA ATRAS</button>
-                <h2>Sorteo</h2>
+            <button class="btn btn-info backButton" title="Volver a la lista">
+                <img src="img/back.png" alt="Volver a lista" id='toListScreen'>
+            </button>
+            <h2>Sorteo</h2>
         </div>
 
         <div class='lotterySection'>
@@ -59,6 +61,10 @@
                 <div class="config-section">
                     <label for="input-winners">Ganadores</label>
                     <input  class='input-winners'   id='input-winners' type="number" maxlength="1" min="1" max="11" placeholder="0">
+
+                    <label for="hold-last-winner" class="hlw-label">Mantener 1º</label>
+                    <input type="checkbox" id='hold-last-winner' class="hlw-checkbox">
+
                     <button class='btn btn-warning' id='lottery-go'>Sortear</button>
                 </div>
                 <div class="winners">
